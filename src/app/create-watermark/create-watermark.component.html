@@ -1,0 +1,48 @@
+<div class="main-content">
+  <div class="input-container">
+    <form [formGroup]="watermarkForm">
+      <div class="form-wrapper">
+        <div class="uploader">
+          <p>
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Upload an image"
+              fontIcon="cloud_upload"
+            ></mat-icon>
+          </p>
+          <input
+            type="file"
+            id="targetImage"
+            name="targetImage"
+            formControlName="targetImage"
+            accept="image/jpg, image/jpeg, image/png"
+          />
+
+          <mat-label>
+            <p>Upload your image</p>
+            <p>Accepted formats jpg, jpeg and png</p>
+            <p>Max size limit 5 MB</p>
+          </mat-label>
+        </div>
+      </div>
+      <div class="form-wrapper">
+        <mat-form-field appearance="fill">
+          <mat-label>Watermark Postion</mat-label>
+          <mat-select formControlName="watermarkPosition">
+            @for (option of positionArray; track option) {
+            <mat-option [value]="option.value">{{ option.label }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div class="preview-container">
+    <div class="preview"></div>
+    <div class="actions">
+      <button mat-flat-button type="button" role="button" color="primary" aria-label="Download">
+        Download
+      </button>
+    </div>
+  </div>
+</div>

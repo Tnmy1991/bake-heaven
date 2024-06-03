@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { MatCommonModule } from '@angular/material/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+import { CreateWatermarkComponent } from './create-watermark/create-watermark.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [MatCommonModule, MatToolbarModule, CreateWatermarkComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'apply-watermark';
+  title = 'Bake Heaven - Apply Watermark';
 }
