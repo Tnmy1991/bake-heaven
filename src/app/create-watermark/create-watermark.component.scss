@@ -8,18 +8,18 @@
   border: 1px solid red;
   justify-content: space-between;
 
+  .form-wrapper {
+    margin: 15px 15px 15px;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
   .input-container {
     width: 48%;
     padding: 10px;
     border: 1px solid red;
-
-    .form-wrapper {
-      margin: 15px 15px 15px;
-
-      mat-form-field {
-        width: 100%;
-      }
-    }
 
     .uploader {
       border: 2px dashed #ccc;
@@ -53,8 +53,10 @@
     }
 
     .actions {
+      gap: 10px;
       margin: 10px;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
     }
   }
 }
