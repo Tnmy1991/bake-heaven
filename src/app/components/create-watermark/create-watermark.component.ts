@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import {
   FormGroup,
   Validators,
   FormControl,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ImageWatermark, TranslatePlacementType } from 'watermark-js-plus';
 import { ImageUploaderComponent } from '../image-uploader/image-uploader.component';
 
@@ -31,8 +31,8 @@ export class CreateWatermarkComponent implements OnInit {
   public file!: File;
   public imageUrl: string = '';
   public watermarkForm!: FormGroup;
-  public watermarkFlag: boolean = false;
   public imageDOM!: HTMLImageElement;
+  public watermarkFlag: boolean = false;
   public position: TranslatePlacementType = 'middle';
   public positionArray: { label: string; value: TranslatePlacementType }[] = [
     { label: 'Top', value: 'top' },
