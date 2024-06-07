@@ -28,6 +28,18 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div class="form-wrapper">
+        <mat-slider
+          min="50"
+          max="300"
+          step="1"
+          showTickMarks
+          discrete
+          [displayWith]="formatLabel"
+        >
+          <input matSliderThumb formControlName="imageWidth" />
+        </mat-slider>
+      </div>
       <div class="actions">
         <button
           mat-flat-button

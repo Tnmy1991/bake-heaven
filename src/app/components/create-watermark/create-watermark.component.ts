@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,6 +19,7 @@ import { ImageUploaderComponent } from '../image-uploader/image-uploader.compone
   imports: [
     MatButtonModule,
     MatSelectModule,
+    MatSliderModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     ImageUploaderComponent,
@@ -50,6 +52,7 @@ export class CreateWatermarkComponent implements OnInit {
 
   ngOnInit(): void {
     this.watermarkForm = new FormGroup({
+      imageWidth: new FormControl(200, [Validators.required]),
       targetImage: new FormControl('', [Validators.required]),
       watermarkPosition: new FormControl(this.position, [Validators.required]),
     });
@@ -59,6 +62,10 @@ export class CreateWatermarkComponent implements OnInit {
       this.watermark?.destroy();
       this.watermarkFlag = false;
     });
+  }
+
+  formatLabel(value: number): string {
+    return `${value}` as string;
   }
 
   previewImage(files: File[]): void {
@@ -79,7 +86,7 @@ export class CreateWatermarkComponent implements OnInit {
     this.watermark = new ImageWatermark({
       contentType: 'image',
       image: '/apply-watermark/watermark.png',
-      imageWidth: 300,
+      imageWidth: this.watermarkForm.value.imageWidth,
       width: this.imageDOM.width,
       height: this.imageDOM.height,
       dom: this.imageDOM,
