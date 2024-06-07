@@ -19,8 +19,9 @@
   }
 
   .input-container {
-    width: 320px;
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 
     .form-wrapper {
       margin: 15px 15px 15px;
