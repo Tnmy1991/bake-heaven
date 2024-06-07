@@ -78,7 +78,7 @@ export class CreateWatermarkComponent implements OnInit {
 
     this.watermark = new ImageWatermark({
       contentType: 'image',
-      image: '/watermark.png',
+      image: '/apply-watermark/watermark.png',
       imageWidth: 300,
       width: this.imageDOM.width,
       height: this.imageDOM.height,
