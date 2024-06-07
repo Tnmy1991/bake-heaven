@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatCommonModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { CreateWatermarkComponent } from './create-watermark/create-watermark.component';
+import { CreateWatermarkComponent } from './components/create-watermark/create-watermark.component';
 
 @Component({
   selector: 'app-root',

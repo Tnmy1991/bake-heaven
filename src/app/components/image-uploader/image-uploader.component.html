@@ -1,0 +1,22 @@
+<ng-container [formGroup]="formGroup">
+  <button
+  mat-flat-button
+  type="button"
+  role="button"
+  color="primary"
+  (click)="onClick()"
+>
+  <mat-icon>add</mat-icon>
+  <span>{{ buttonLabel }}</span>
+</button>
+<input
+  #fileUpload
+  type="file"
+  id="imageField"
+  name="imageField"
+  [accept]="acceptedTypes"
+  formControlName="{{imageField}}"
+  class="input_fileupload--hidden"
+  (change)="onFileSelected($event)"
+/>
+</ng-container>
