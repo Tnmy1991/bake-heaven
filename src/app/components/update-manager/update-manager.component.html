@@ -1,0 +1,26 @@
+@if (hasUpdate) {
+<div class="update-container">
+  <div
+    class="d-flex align-items-center new-version-checker-container bg-main-color py-2 px-1 robot_newVersionChecker"
+  >
+    <div class="pr-2">
+      <button
+        type="button"
+        class="btn btn-icon-transparent"
+        aria-label="Refresh"
+        (click)="applyUpdate()"
+      >
+        <i class="fa-regular fa-arrows-rotate fa-gray fa-large"></i>
+      </button>
+    </div>
+    <div class="new-version-checker-info text-white">
+      <div class="s1-m mb-1 robot_newVersionChecker_title">
+        {{ "UPDATE_CHECKER_TITLE" }}
+      </div>
+      <div class="s1-r robot_newVersionChecker_information">
+        {{ "UPDATE_CHECKER_INFORMATION" }}
+      </div>
+    </div>
+  </div>
+</div>
+}
