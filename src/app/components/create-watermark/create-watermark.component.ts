@@ -4,7 +4,7 @@ import {
   FormControl,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ImageWatermark, TranslatePlacementType } from 'watermark-js-plus';
 import { ImageUploaderComponent } from '../image-uploader/image-uploader.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-create-watermark',
@@ -27,7 +28,7 @@ import { ImageUploaderComponent } from '../image-uploader/image-uploader.compone
   templateUrl: './create-watermark.component.html',
   styleUrl: './create-watermark.component.scss',
 })
-export class CreateWatermarkComponent implements OnInit {
+export class CreateWatermarkComponent implements OnInit, OnDestroy {
   public file!: File;
   public imageUrl: string = '';
   public watermarkForm!: FormGroup;
@@ -47,6 +48,7 @@ export class CreateWatermarkComponent implements OnInit {
   ];
 
   private watermark!: ImageWatermark;
+  private unSubscribe$: Subject<void> = new Subject();
 
   constructor(private httpClient: HttpClient) {}
 
@@ -57,11 +59,13 @@ export class CreateWatermarkComponent implements OnInit {
       watermarkPosition: new FormControl(this.position, [Validators.required]),
     });
 
-    this.watermarkForm.valueChanges.pipe().subscribe((response) => {
-      this.position = response.watermarkPosition;
-      this.watermark?.destroy();
-      this.watermarkFlag = false;
-    });
+    this.watermarkForm.valueChanges
+      .pipe(takeUntil(this.unSubscribe$))
+      .subscribe((response) => {
+        this.position = response.watermarkPosition;
+        this.watermark?.destroy();
+        this.watermarkFlag = false;
+      });
   }
 
   formatLabel(value: number): string {
@@ -125,5 +129,10 @@ export class CreateWatermarkComponent implements OnInit {
           link.remove();
         }, 100);
       });
+  }
+
+  ngOnDestroy(): void {
+    this.unSubscribe$.next();
+    this.unSubscribe$.complete();
   }
 }
