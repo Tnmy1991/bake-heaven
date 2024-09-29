@@ -89,7 +89,7 @@ export class CreateWatermarkComponent implements OnInit, OnDestroy {
 
     this.watermark = new ImageWatermark({
       contentType: 'image',
-      image: '/apply-watermark/watermark.png',
+      image: '/bake-heaven/watermark.png',
       imageWidth: this.watermarkForm.value.imageWidth,
       width: this.imageDOM.width,
       height: this.imageDOM.height,
