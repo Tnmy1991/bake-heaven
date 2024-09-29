@@ -3,6 +3,29 @@
   font-weight: 600;
   font-family: "Space Mono";
   background: #bf1469;
+
+  .toggle-icon-button {
+    color: #fff !important;
+  }
+}
+
+.mat-drawer-container {
+  height: calc(100vh - 110px);
+
+  .mat-drawer {
+    height: calc(100vh - 110px);
+    -webkit-box-shadow: 7px 0px 20px -3px rgba(0, 0, 0, 0.59);
+    -moz-box-shadow: 7px 0px 20px -3px rgba(0, 0, 0, 0.59);
+    box-shadow: 7px 0px 20px -3px rgba(0, 0, 0, 0.59);
+
+    a {
+      text-decoration: none;
+
+      &.active {
+        font-weight: 700;
+      }
+    }
+  }
 }
 
 footer {

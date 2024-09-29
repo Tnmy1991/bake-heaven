@@ -1,10 +1,38 @@
 <main class="main">
   <mat-toolbar>
+    <button
+      mat-icon-button
+      class="toggle-icon-button"
+      (click)="toggle()"
+      aria-label="Toggle side navigation"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
     <span>{{ title }}</span>
   </mat-toolbar>
-  <div class="container">
-    <app-create-watermark />
-  </div>
+  <mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side">
+      <mat-list #shoes>
+        @for (nav of navigation; track nav) {
+        <mat-list-item
+          ><a
+            (click)="toggle()"
+            routerLink="{{ nav.route }}"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            >{{ nav.label }}</a
+          ></mat-list-item
+        >
+        }
+      </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+
   <footer>
     <p>Bake Heaven &copy; 2024</p>
   </footer>

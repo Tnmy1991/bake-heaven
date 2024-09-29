@@ -1,0 +1,23 @@
+.iframe-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  iframe {
+    width: 75vw;
+    height: 100vh;
+  }
+
+  @media screen and (max-width: 960px) {
+    iframe {
+      width: 80vw;
+    }
+  }
+
+  @media screen and (max-width: 560px) {
+    iframe {
+      width: 100vw;
+    }
+  }
+}
